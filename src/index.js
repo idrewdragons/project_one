@@ -1,17 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { pics } from "./pics";
+import Loki from './Loki';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const PicList = () => {
+  return (
+    <>
+    <h1>Day in the Life Of Loki</h1>
+      <section className="piclist">
+        {pics.map((loki, index) => {
+          return <Loki {...loki} key={loki.id} number={index} />;
+        })}
+      </section>
+    </>
+  );
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<PicList />);
